@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Acme&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Acme&family=Roboto&display=swap');
+html{
+    margin: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+.sidebar{
+    display: none;
+}
+.nav{
+    display: none;
+}
+#user-img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;   
+}
+.navbar img{
+    width: 120px;
+    height: 55px;
+     
+}
+.navbar{
+    padding: 0px 10px 0px 0px;
+    position: sticky;
+}
+.navbar ul{
+    margin: 0px;
+}
+
+.navbar ul li{
+    
+    display: inline-flex;
+    list-style-type: none;
+}
+.navbar ul li a{
+    font-size: 20px;
+    margin: 0px 10px 0px 10px;
+    text-decoration: none;
+    color: black;
+    font-weight:bolder;
+}
+
+.img-content{
+    width: 100%;
+    height: 60vh;
+    background-image: url("./images/homepage.jpg");
+    background-size: cover;
+    padding-top: 10vh;
+
+}
+.img-content h1,h2{
+   
+    vertical-align: center;
+    color: white;
+    text-align: center;
+}
+.img-content h1{
+    font-size: 20vh;
+    font-family: 'Acme', sans-serif;
+}
+.form-inline input{
+    margin-right: 0px !important;
+}
+.form-inline i{
+    padding: 10px;
+    color: white;
+    background-color: black;
+}
+@media (max-width:425px) {
+    .nav{
+        display: block;
+    }
+    .lg-nav{
+        display: none;
+    }
+    html,body{
+        margin: 0;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    .navbar{
+        padding:0px 0px 0px 10px;
+    }
+    .form-control{
+        width: 85%;
+    }
+    .img-content{
+        height: 40vh;
+    }
+    .img-content h1{
+        font-size: 10vh;
+    }
+    .sidebar {
+        top: 0;
+        width: 0;
+        overflow-x: hidden;
+        position:fixed;
+        height: 100vh;
+        background-color: #c4c4c4;
+    }
+    #nav_icon {
+        cursor: pointer;
+        font-size: 25px;
+        padding: 10px 10px 10px 10px;
+    }
+    .sidebar{
+        display: block;
+    }
+    .sidebar ul {
+        list-style: none;
+        padding: 0%;
+    }
+    .sidebar ul li {
+        padding: 10px 10px 10px 20px;
+    }
+    .sidebar ul li:hover,
+    :focus {
+        background-color: #abaaaa;
+    }
+    .sidebar ul li a:hover,
+    :focus {
+        color: black;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .sidebar a {
+        color: black;
+        text-decoration: none;
+    }
+    .sidebar a i {
+        padding: 5px 5px 5px 5px;
+    }
+    .nav_user {
+        background-color: #0c7221;
+        display: grid;
+        color: white;
+    }
+    .user_id {
+        display: grid;
+        justify-content: center;
+    }
+    #log_button {
+        background-color: #28a745;
+        
+    }
+    .form-inline{
+        padding: 10px;
+    }
+    .navbar img{
+        height: 30px ;
+        margin-right: 80px;
+    }
+}
