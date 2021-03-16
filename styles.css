@@ -86,6 +86,9 @@ html{
     .form-control{
         width: 85%;
     }
+    nav #user-icon-pop{
+        display: none;
+    }
     .img-content{
         height: 40vh;
     }
@@ -136,11 +139,13 @@ html{
         background-color: #0c7221;
         display: grid;
         color: white;
+        padding-bottom: 10px;
     }
     .user_id {
         display: grid;
         justify-content: center;
     }
+    
     #log_button {
         background-color: #28a745;
         
