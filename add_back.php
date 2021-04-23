@@ -27,6 +27,7 @@ if(isset($_POST['addbutton'])){
         $sql="INSERT INTO `products` (`name`, `price`, `quantity`,`address`,`city`,`number`,`email`,`category`,`image`) VALUES ('$name','$price','$quantity','$address','$city','$number','$pmail','$category','$destfile')";
         if(mysqli_query($link,$sql)){
             echo "<script>alert('Product added successfully')</script>";
+            header("location:homepage.php");
         }
         else{
             echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);

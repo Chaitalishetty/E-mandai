@@ -1,3 +1,10 @@
+<?php
+            session_start();
+            $count=0;
+            if(isset($_SESSION['shopping_cart'])){
+                $count=count($_SESSION['shopping_cart']);
+            }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,19 +28,22 @@
             </div>
 
         </div>
-        <a href="homepage.html"><img src="./images/E-MANDAI .png" class="logo"></a>
+        <a href="homepage.php"><img src="./images/E-MANDAI .png" class="logo"></a>
         <ul class="lg-nav">
-            <li><a href="homepage.html">Home</a></li>
-            <li><a href="categories.html">Categories</a></li>
-            <li><a href="aboutus.html">About us</a></li>
-            <li><a href="addproduct.html">Add product</a></li>
+            <li><a href="homepage.php">Home</a></li>
+            <li><a href="categories.php">Categories</a></li>
+            <li><a href="aboutus.php">About us</a></li>
+            <li><a href="addproduct.php">Add product</a></li>
         </ul>
         <!-- Navbar content -->
         <form class="form-inline">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <i class="fa fa-search" aria-hidden="true"></i>
         </form>
-
+        <div id="cart_icon">
+        <a href="cart.php"><i class="fa fa-shopping-cart" style="font-size:40px;color:black"></i></a>
+        <span class="badge bg-primary"><?php echo $count?></span>
+        </div>
         <a data-container="body" data-toggle="popover" data-placement="bottom" data-content="Bottom popover"
             id="user-icon-pop">
             <i class="fa fa-user-circle" aria-hidden="true" style="color:white;font-size:50px;"></i>
@@ -51,13 +61,13 @@
             </div>
         </div>
         <ul>
-            <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>My Profile</a></li>
-            <li><a href="homepage.html"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
-            <li><a href="categories.html"><i class="fa fa-th-list" aria-hidden="true"></i>Categories</a></li>
-            <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Orders</a></li>
-            <li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i>Favourites</a></li>
-            <li><a href="aboutus.html"><i class="fa fa-info-circle" aria-hidden="true"></i>About us</a></li>
-            <li><button type="button" class="btn btn-success" id="log_button">Log Out</button></li>
+        <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>My Profile</a></li>
+            <li><a href="homepage.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+            <li><a href="categories.php"><i class="fa fa-th-list" aria-hidden="true"></i>Categories</a></li>
+            <li><a href="cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Cart</a></li>
+            <li><a href="addproduct.php"><i class="fa fa-plus-square"></i>Add product</a></li>
+            <li><a href="aboutus.php"><i class="fa fa-info-circle" aria-hidden="true"></i>About us</a></li>
+            <li><button type="button" class="btn btn-success" name="logout" id="log_button">Log Out</button></li>
         </ul>
 
     </div>

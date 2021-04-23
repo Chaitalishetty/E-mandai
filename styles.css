@@ -70,7 +70,9 @@ html{
 .navbar-nav:active{
     position: absolute;
 }
-
+#product-section{
+    padding: 10px;
+}
 #add_form{
     margin-top: 5rem;
     margin-bottom: 5rem;
@@ -82,7 +84,40 @@ html{
 #add_form input,select{
     width: 90% !important;
 }
-@media (max-width:573px) {
+.product_card{
+    margin-top: 20px;
+    box-shadow: 1px 2px 10px 0px #6daecb;
+}
+.product_card:hover{
+    transform: scale(1.05,1.05);
+}
+.card-title{
+    display: inline-flex;
+}
+.card-title1{
+    margin-right: 30px;
+}
+.card-title2{
+    color: #045e18;
+}
+.card-body{
+    background-color: #7f26e121;
+}
+#p_details{
+    padding: 20px;
+    text-align: center;
+}
+.p_img{
+    height: 90vh;
+    width: auto
+}
+.p_link{
+    color: black;
+}
+.p_link:hover{
+    text-decoration: none;
+}
+@media (max-width:400px) {
     .nav{
         display: block;
     }
@@ -108,22 +143,25 @@ html{
     }
     .img-content h1{
         font-size: 10vh;
-    }
-    .sidebar {
-        top: 0;
-        width: 0;
-        overflow-x: hidden;
-        position:fixed;
-        height: 100vh;
-        background-color: #c4c4c4;
-    }
+    }   
     #nav_icon {
         cursor: pointer;
         font-size: 25px;
         padding: 10px 10px 10px 10px;
     }
     .sidebar{
+        top: 0;
+        width: 0;
+        overflow-x: hidden;
+        position:fixed;
+        height: 100vh;
+        background-color: #c4c4c4;
+        z-index: 2;
         display: block;
+    }
+    .p_img{
+        width:100vw;
+        height:auto;
     }
     .sidebar ul {
         list-style: none;
@@ -173,5 +211,12 @@ html{
     }
     #add_form{
         margin-top: 2rem;
+    }
+    #cart_icon{
+        display: none;
+    }
+    .form-inline{
+        width: 375px;
+        display: inline-flex;
     }
 }

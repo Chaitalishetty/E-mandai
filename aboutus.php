@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<?php
+            session_start();
+            $count=0;
+            if(isset($_SESSION['shopping_cart'])){
+                $count=count($_SESSION['shopping_cart']);
+            }
+?>
 <html lang="en">
 
 <head>
@@ -15,7 +21,8 @@
         integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
         crossorigin="anonymous"></script>
     <link href="styles.css" rel="stylesheet" type="text/css">
-    <title>Document</title>
+    <title>About us</title>
+    <link rel="stylesheet" href="about.css">
 </head>
 
 <body>
@@ -26,33 +33,44 @@
             </div>
 
         </div>
-        <a href="homepage.html"><img src="./images/E-MANDAI .png" class="logo"></a>
+        <a href="homepage.php"><img src="./images/E-MANDAI .png" class="logo"></a>
         <ul class="lg-nav">
-            <li><a href="homepage.html">Home</a></li>
-            <li><a href="categories.html">Categories</a></li>
-            <li><a href="aboutus.html">About us</a></li>
-            <li><a href="addproduct.html">Add product</a></li>
+            <li><a href="homepage.php">Home</a></li>
+            <li><a href="categories.php">Categories</a></li>
+            <li><a href="aboutus.php">About us</a></li>
+            <li><a href="addproduct.php">Add product</a></li>
+           
         </ul>
         <!-- Navbar content -->
         <form class="form-inline">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <i class="fa fa-search" aria-hidden="true"></i>
         </form>
-
-        <a data-container="body" data-toggle="popover" data-placement="bottom" data-content="Bottom popover"
-            id="user-icon-pop">
+        <div id="cart_icon" >
+            <a href="cart.php"><i class="fa fa-shopping-cart" style="font-size:40px;color:black"></i></a>
+            <span class="badge bg-primary"><?php echo $count?></span>
+        </div>
+        <a data-container="body" data-toggle="popover" data-placement="bottom" data-content="Bottom popover" id="user-icon-pop">
             <i class="fa fa-user-circle" aria-hidden="true" style="color:white;font-size:50px;"></i>
         </a>
 
-    </nav>
-    <div class="img-content">
-        <h2>Welcome to </h2><br>
-        <h1>E-mandai</h1>
-    </div>
 
-  
+    </nav>
+    <div class="about-section">
+        <div class="inner-container">
+            <h1>About Us</h1>
+            <p class="text">
+                The government of india recently announced the new farm bills of which one of the acts includes The
+                Farmers' Produce Trade and Commerce (Promotion and Facilitation) Act, 2020. This act enables the farmers
+                to sell their produce directly to any traders outside the state government-controlled markets. This is a
+                platform for farmers to reach and sell their agricultural products directly to end consumers that
+                directly is from farm to customer place. 
+            </p>
+
+        </div>
+    </div>
     <div id="mynav" class="sidebar">
-        <div class="nav_user">
+    <div class="nav_user">
             <i class="fa fa-times" onclick=closenav() id="nav_icon"></i>
             <div class="user_id">
                 <i class="fa fa-user-circle" aria-hidden="true" style="color:white;font-size:50px;"></i>
@@ -62,12 +80,12 @@
         </div>
         <ul>
             <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i>My Profile</a></li>
-            <li><a href="homepage.html"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
-            <li><a href="categories.html"><i class="fa fa-th-list" aria-hidden="true"></i>Categories</a></li>
-            <li><a href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Orders</a></li>
-            <li><a href="#"><i class="fa fa-heart" aria-hidden="true"></i>Favourites</a></li>
-            <li><a href="aboutus.html"><i class="fa fa-info-circle" aria-hidden="true"></i>About us</a></li>
-            <li><button type="button" class="btn btn-success" id="log_button">Log Out</button></li>
+            <li><a href="homepage.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
+            <li><a href="categories.php"><i class="fa fa-th-list" aria-hidden="true"></i>Categories</a></li>
+            <li><a href="cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Cart</a></li>
+            <li><a href="addproduct.php"><i class="fa fa-plus-square"></i>Add product</a></li>
+            <li><a href="aboutus.php"><i class="fa fa-info-circle" aria-hidden="true"></i>About us</a></li>
+            <li><button type="button" class="btn btn-success" name="logout" id="log_button">Log Out</button></li>
         </ul>
 
     </div>
@@ -83,9 +101,6 @@
         document.getElementById("mynav").style.width = "0";
         document.getElementById("content").style.marginLeft = "0";
     }
-    $(function () {
-        $('[data-toggle="popover"]').popover()
-    })
 </script>
 
 </html>
