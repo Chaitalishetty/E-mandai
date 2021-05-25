@@ -12,7 +12,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"crossorigin="anonymous"></script>
     <link href="styles.css" rel="stylesheet" type="text/css">
-    <title>Document</title>
+    <title>E-mandai</title>
+    <link rel = "icon" href ="./images/logo.png" type = "image/x-icon">
 </head>
 
 <body>
@@ -28,13 +29,13 @@
             <li><a href="homepage.php">Home</a></li>
             <li><a href="categories.php">Categories</a></li>
             <li><a href="aboutus.php">About us</a></li>
-            <li><a href="addproduct.php">Add product</a></li>
         </ul>
         <!-- Navbar content -->
         <form class="form-inline">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <i class="fa fa-search" aria-hidden="true"></i>
         </form>
+        <!-- <div id="google_translate_element"></div> -->
         <?php
             session_start();
             $count=0;
@@ -46,7 +47,7 @@
         <a href="cart.php"><i class="fa fa-shopping-cart" style="font-size:40px;color:black"></i></a>
         <span class="badge bg-primary"><?php echo $count?></span>
         </div>
-        <a data-container="body" data-toggle="popover" data-placement="bottom" data-content="Bottom popover"
+        <a data-container="body" data-toggle="popover" data-placement="bottom" data-content="<a href='logout.php'>Logout</a>" data-html="true"
             id="user-icon-pop">
             <i class="fa fa-user-circle" aria-hidden="true" style="color:white;font-size:50px;"></i>
         </a>
@@ -76,6 +77,7 @@
             <input type="hidden" name="pprice" value="<?php echo  $row['price'];?>" >
             <input type="hidden" name="pimg" value="<?php echo  $row['image'];?>" >
             <input type="hidden" name="pquan" value="<?php echo  $row['quantity'];?>" >
+            <input type="hidden" name="provider" value="<?php echo  $row['username'];?>" >
             <div class="product_card">
                 <div class="card text-center" style="width: 18rem;">
                 <img src="<?php echo $row['image'];?>" class="card-img-top" width="auto" height="250px" alt="product-image">
@@ -85,7 +87,7 @@
                     <div class="card-title1"><?php echo strtoupper($row['name']);?>
                     </div>
                     </a>
-                    <div class="card-title2">&#8377;<?php echo $row['price'];?></div>
+                    <div class="card-title2">&#x20b9;<?php echo $row['price'];?></div>
                     </h4>
                 
                 <input type="submit" name="add_to_cart" value="ADD TO CART" class="btn btn-primary" >
@@ -99,7 +101,7 @@
         <?php
                        }
                        else{
-                           echo "No product available";
+                           echo "&nbsp;&nbsp;<h4>No product available<h4>";
                        }
         ?>
     </div>
@@ -118,9 +120,8 @@
             <li><a href="homepage.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
             <li><a href="categories.php"><i class="fa fa-th-list" aria-hidden="true"></i>Categories</a></li>
             <li><a href="cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Cart</a></li>
-            <li><a href="addproduct.php"><i class="fa fa-plus-square"></i>Add product</a></li>
             <li><a href="aboutus.php"><i class="fa fa-info-circle" aria-hidden="true"></i>About us</a></li>
-            <li><button type="button" class="btn btn-success" name="logout" id="log_button">Log Out</button></li>
+            <li><a href="logout.php"><button type="button" class="btn btn-success" name="logout" id="log_button">Log Out</button></a></li>
         </ul>
 
     </div>
@@ -139,6 +140,13 @@
     $(function () {
             $('[data-toggle="popover"]').popover()
         })
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'en',includedLanguages: 'hi,ta,te,kn,ml,gu,mr,bn'}, 'google_translate_element');
+}
 </script>
 
 </html>

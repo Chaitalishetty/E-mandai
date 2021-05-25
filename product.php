@@ -7,8 +7,8 @@ if (isset($_GET['id'])) {
    $sql="SELECT * FROM `products` where id='$id'";
    $query_run = mysqli_query($link,$sql);
    if(mysqli_num_rows($query_run)>0)  
-			   while($row = mysqli_fetch_array($query_run))
-			   {
+		while($row = mysqli_fetch_array($query_run))
+			{
            $image=$row['image'];
            $name=$row['name'];
            $price=$row['price'];
@@ -18,7 +18,7 @@ if (isset($_GET['id'])) {
            $number=$row['number'];
            $email=$row['email'];
            $category=$row['category'];
-           $image=$row['image'];
+           $pname=$row['username'];
         
          }
    else{
@@ -49,7 +49,8 @@ if (isset($_GET['id'])) {
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"crossorigin="anonymous"></script>
     <link href="styles.css" rel="stylesheet" type="text/css">
-    <title>Document</title>
+    <title>View Product</title>
+    <link rel = "icon" href ="./images/logo.png" type = "image/x-icon">
 </head>
 
 <body>
@@ -65,7 +66,6 @@ if (isset($_GET['id'])) {
             <li><a href="homepage.php">Home</a></li>
             <li><a href="categories.php">Categories</a></li>
             <li><a href="aboutus.php">About us</a></li>
-            <li><a href="addproduct.php">Add product</a></li>
         </ul>
         <!-- Navbar content -->
         <form class="form-inline">
@@ -82,7 +82,7 @@ if (isset($_GET['id'])) {
         <a href="cart.php"><i class="fa fa-shopping-cart" style="font-size:40px;color:black"></i></a>
         <span class="badge bg-primary"><?php echo $count?></span>
         </div>
-        <a data-container="body" data-toggle="popover" data-placement="bottom" data-content="Bottom popover"
+        <a data-container="body" data-toggle="popover" data-placement="bottom" data-content="<a href='logout.php'>Logout</a>" data-html="true"
             id="user-icon-pop">
             <i class="fa fa-user-circle" aria-hidden="true" style="color:white;font-size:50px;"></i>
         </a>
@@ -105,6 +105,7 @@ if (isset($_GET['id'])) {
         <h4>M.R.P: &#8377;&nbsp;<?php echo $price;?></h4><br>
         <h4>Category: <?php echo $category;?><h4><br>
         <h4>Provider details: 
+            <h5>Name : <?php echo $pname;?></h5>
           <h5>E-mail : <?php echo $email;?></h5>
           <h5>Mobile number : <?php echo $number;?></h5>
           <h5>City : <?php echo $city;?></h5>
@@ -130,9 +131,8 @@ if (isset($_GET['id'])) {
             <li><a href="homepage.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
             <li><a href="categories.php"><i class="fa fa-th-list" aria-hidden="true"></i>Categories</a></li>
             <li><a href="cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Cart</a></li>
-            <li><a href="addproduct.php"><i class="fa fa-plus-square"></i>Add product</a></li>
             <li><a href="aboutus.php"><i class="fa fa-info-circle" aria-hidden="true"></i>About us</a></li>
-            <li><button type="button" class="btn btn-success" name="logout" id="log_button">Log Out</button></li>
+            <li><a href="logout.php"><button type="button" class="btn btn-success" name="logout" id="log_button">Log Out</button></a></li>
         </ul>
 
     </div>

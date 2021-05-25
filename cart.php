@@ -18,7 +18,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"crossorigin="anonymous"></script>
     <link href="styles.css" rel="stylesheet" type="text/css">
-    <title>Document</title>
+    <title>My Cart</title>
+    <link rel = "icon" href ="./images/logo.png" type = "image/x-icon">
 </head>
 
 <body>
@@ -34,7 +35,6 @@
             <li><a href="homepage.php">Home</a></li>
             <li><a href="categories.php">Categories</a></li>
             <li><a href="aboutus.php">About us</a></li>
-            <li><a href="addproduct.php">Add product</a></li>
         </ul>
         <!-- Navbar content -->
         <form class="form-inline">
@@ -51,22 +51,22 @@
         <a href="cart.php"><i class="fa fa-shopping-cart" style="font-size:40px;color:black"></i></a>
         <span class="badge bg-primary"><?php echo $count?></span>
         </div>
-        <a data-container="body" data-toggle="popover" data-placement="bottom" data-content="Bottom popover"
+        <a data-container="body" data-toggle="popover" data-placement="bottom" data-content="<a href='logout.php'>Logout</a>" data-html="true"
             id="user-icon-pop">
             <i class="fa fa-user-circle" aria-hidden="true" style="color:white;font-size:50px;"></i>
         </a>
 
     </nav>
-    <div class="row">
+    <div class="row" id="p_table">
         <div class="col-sm-8">
                 <table class="table table-bordered">
                 <thead>
                 <tr>
-                    <th scope="col">Image</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Quantity</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Action</th>
+                    <th class="table-dark"scope="col" id="c_p_img">Image</th>
+                    <th class="table-dark"scope="col">Name</th>
+                    <th class="table-dark"scope="col">Quantity</th>
+                    <th class="table-dark"scope="col">Price</th>
+                    <th class="table-dark"scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -78,11 +78,12 @@
                     {
                 ?>
                 <tr>
-                    <td><img src="<?php echo $value['item_image']?>" style="width:50px;height:auto;"></td>
-                    <td><?php echo $value['item_name']?></td>
+                    <td id="c_p_img"><img src="<?php echo $value['item_image']?>" style="width:50px;height:auto;"></td>
+                    <td><?php echo strtoupper($value['item_name'])?></td>
                     <td><?php echo $value['item_quantity']?></td>
-                    <td><?php echo $value['item_price']?></td>    
-                    <td><button type="button" class="btn btn-outline-danger">Danger</button></td>
+                    <td><?php echo "&#8377;".$value['item_price']?></td>    
+                    <td>
+                     <a href="addcart.php" name="delete">Delete</a></td>
                 
                 <?php       
                     $total = $total + $value['item_price'];        
@@ -92,6 +93,9 @@
                 </tr>
                 <?php
                 }
+                else{
+                    $total=0;
+                }
                 ?>
                 
                 
@@ -100,11 +104,23 @@
         </div>
         <div class="col-sm-4">
         <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text"><?php echo $total;?></p>
-                    <a href="#" class="btn btn-primary">Checkout</a>
-                </div>
+                <form method="POST" action="order.php">
+                    <div class="card-body" style="text-align:center;">
+                    <h3 class="card-title">TOTAL : 
+                        <h4 class="card-text">(<?php echo $count?> items)</h4>
+                        <h3 class="card-text">&#x20b9;<?php echo $total;?></h3>
+                    </h3>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Address</label>
+                        <textarea class="form-control" name="c_address" id="exampleFormControlTextarea1" rows="3" placeholder="Enter your address"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Phone no.</label>
+                        <input type="text" class="form-control" name="c_number" id="formGroupExampleInput" placeholder="Enter your phone no.">
+                    </div>
+                    <input type="submit" class="btn btn-success" name="order_product" value="Order">
+                <form>
         </div>
         </div>
     </div>      
@@ -123,9 +139,8 @@
             <li><a href="homepage.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a></li>
             <li><a href="categories.php"><i class="fa fa-th-list" aria-hidden="true"></i>Categories</a></li>
             <li><a href="cart.php"><i class="fa fa-shopping-cart" aria-hidden="true"></i>My Cart</a></li>
-            <li><a href="addproduct.php"><i class="fa fa-plus-square"></i>Add product</a></li>
             <li><a href="aboutus.php"><i class="fa fa-info-circle" aria-hidden="true"></i>About us</a></li>
-            <li><button type="button" class="btn btn-success" name="logout" id="log_button">Log Out</button></li>
+            <li><a href="logout.php"><button type="button" class="btn btn-success" name="logout" id="log_button">Log Out</button></a></li>
         </ul>
 
     </div>

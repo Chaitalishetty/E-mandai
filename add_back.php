@@ -17,6 +17,7 @@ if(isset($_POST['addbutton'])){
     $number = mysqli_real_escape_string($link, $_POST['number']);
     $pmail = mysqli_real_escape_string($link, $_POST['pemail']);
     $category = mysqli_real_escape_string($link, $_POST['category']);
+    $farmer=$_SESSION['username'];
     $file=$_FILES['pimage'];
     $filename=$file['name'];
     $filepath=$file['tmp_name'];
@@ -24,10 +25,10 @@ if(isset($_POST['addbutton'])){
     if($fileerror==0){
         $destfile='uploads/'.$filename;
         move_uploaded_file($filepath,$destfile);
-        $sql="INSERT INTO `products` (`name`, `price`, `quantity`,`address`,`city`,`number`,`email`,`category`,`image`) VALUES ('$name','$price','$quantity','$address','$city','$number','$pmail','$category','$destfile')";
+        $sql="INSERT INTO `products` (`name`, `price`, `quantity`,`address`,`city`,`number`,`email`,`category`,`image`,`username`) VALUES ('$name','$price','$quantity','$address','$city','$number','$pmail','$category','$destfile','$farmer')";
         if(mysqli_query($link,$sql)){
             echo "<script>alert('Product added successfully')</script>";
-            header("location:homepage.php");
+            header("location:farmerhome.php");
         }
         else{
             echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
