@@ -16,9 +16,18 @@ if (isset($_POST['signup']))
         $user=mysqli_real_escape_string($conn,$_POST['username']);
         $email=mysqli_real_escape_string($conn,$_POST['email']);
         $pass=mysqli_real_escape_string($conn,$_POST['password']);
-        $sql="INSERT INTO `userdata` (`username`, `email`, `password`) VALUES ('$user','$email','$pass')";
-        if(mysqli_query($conn,$sql)){
-            header('location:homepage.php');
+        $type=mysqli_real_escape_string($conn,$_POST['type']);
+        $query = "SELECT * FROM `userdata` WHERE email='$email' or username='$user'";
+        $result = mysqli_query($conn,$query);
+        $row=mysqli_fetch_array($result);
+        if(mysqli_num_rows($result)==0){
+            $sql="INSERT INTO `userdata` (`username`, `email`, `password`,`type`) VALUES ('$user','$email','$pass','$type')";
+            if(mysqli_query($conn,$sql)){
+                header('location:index.html');
+            }
+        }
+        else {
+            echo "<script>alert('Try a different username or email');window.location.href='index.html'</script>";
         }
     }
     else{

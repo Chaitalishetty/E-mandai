@@ -34,6 +34,11 @@ html{
     display: inline-flex;
     list-style-type: none;
 }
+.navbar ul li:hover{
+    background-color: white;
+    border-radius: 5px;
+    transition-duration: 0.5s;
+}
 .navbar ul li a{
     font-size: 20px;
     margin: 0px 10px 0px 10px;
@@ -116,6 +121,9 @@ html{
 }
 .p_link:hover{
     text-decoration: none;
+}
+#p_table{
+    margin:20px;
 }
 @media (max-width:400px) {
     .nav{
@@ -218,5 +226,16 @@ html{
     .form-inline{
         width: 375px;
         display: inline-flex;
+    }
+    #p_table {
+        margin:0px;
+        padding: 0px; 
+    }
+    #p_table .col-sm-8{
+        margin:0px;
+        padding: 0px;
+    }
+    #c_p_img{
+        display: none;
     }
 }

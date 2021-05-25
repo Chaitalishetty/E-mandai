@@ -116,7 +116,21 @@ form.sign-in-form {
   cursor: pointer;
   transition: 0.5s;
 }
-
+.radio-input{
+  display: inline-flex;
+}
+.radio-input .input-field{
+  padding: 15px;
+  margin:10px;
+  display: flex;
+}
+.radio-input input{
+  margin: 7px;
+} 
+.radio-input label{
+  font-size: 1.1rem;
+  color: #aaa;
+}
 .btn:hover {
   background-color: #28a745;
 }

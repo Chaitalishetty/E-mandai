@@ -1,6 +1,5 @@
 <?php
-session_start();
-
+session_start();  
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -34,6 +33,7 @@ if(isset($_POST['add_to_cart']))
             'item_price' => $_POST['pprice'],
             'item_quantity' => $_POST['pquan'],
             'item_image' => $_POST['pimg'],
+            'item_provider' => $_POST['provider'],
 
               
           );
@@ -51,6 +51,7 @@ if(isset($_POST['add_to_cart']))
             'item_price' => $_POST['pprice'],
             'item_quantity' => $_POST['pquan'],
             'item_image' => $_POST['pimg'],
+            'item_provider' => $_POST['provider'],
 
             
         );
@@ -62,4 +63,5 @@ if(isset($_POST['add_to_cart']))
     }
     
 }
+
 ?>
