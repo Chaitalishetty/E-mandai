@@ -97,6 +97,12 @@
 <script>
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var db = firebase.database();
+  if (location.hostname === "localhost") {
+    // Point to the RTDB emulator running on localhost.
+    db.useEmulator("localhost", 9000);
+  } 
+
   var firebaseConfig = {
     apiKey: "AIzaSyDyfM2BlpfQ6q-asi8CKZSmafZ9oJuRXoM",
     authDomain: "e-mandai-b09a7.firebaseapp.com",
